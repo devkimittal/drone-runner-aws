@@ -251,7 +251,7 @@ write_files:
 runcmd:
 - 'set -x'
 - 'ufw allow 9079'
-- 'wget "{{ .LiteEnginePath }}/lite-engine-{{ .Platform.OS }}-{{ .Platform.Arch }}" -O /usr/bin/lite-engine'
+- 'wget --debug "{{ .LiteEnginePath }}/lite-engine-{{ .Platform.OS }}-{{ .Platform.Arch }}" -O /usr/bin/lite-engine'
 - 'chmod 777 /usr/bin/lite-engine'
 {{ if .HarnessTestBinaryURI }}
 - 'wget "{{ .HarnessTestBinaryURI }}/{{ .Platform.Arch }}/{{ .Platform.OS }}/bin/split_tests-{{ .Platform.OS }}_{{ .Platform.Arch }}" -O /usr/bin/split_tests'
