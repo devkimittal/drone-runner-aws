@@ -1,12 +1,17 @@
 version: 2.1
+orbs:
+  docker: circleci/docker@1.7.0
 jobs:
-  build:
+  example-job:
     docker:
-      - image: cimg/base:current
-    resource_class: devkimittal/blah
+      # replace with your preferred image
+      - image: cimg/base:stable
     steps:
-      - run: echo "Hi I'm on a Container Runner!"
+      - docker/build:
+          dockerfile: docker/Dockerfile.linux.amd64 
+          image: something 
+
 workflows:
-  build-workflow:
+  example-workflow:
     jobs:
-      - build
+      - example-job
