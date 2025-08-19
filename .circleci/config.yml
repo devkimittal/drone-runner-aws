@@ -10,6 +10,8 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
+            env
+            echo "_______"
             docker build -f docker/Dockerfile.linux.amd64 -t something .
 
 workflows:
