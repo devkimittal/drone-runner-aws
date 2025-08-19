@@ -1,22 +1,18 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@1.7.0
+
 jobs:
-  example-job:
+  build-docker:
     docker:
-      # replace with your preferred image
       - image: cimg/base:stable
     steps:
       - checkout
+      - setup_remote_docker
       - run:
-          name: run step
+          name: Build Docker Image
           command: |
-            ls
-      - docker/build:
-          dockerfile: docker/Dockerfile.linux.amd64 
-          image: something 
+            docker build -f docker/Dockerfile.linux.amd64 -t something .
 
 workflows:
-  example-workflow:
+  build-docker:
     jobs:
-      - example-job
+      - build-docker
